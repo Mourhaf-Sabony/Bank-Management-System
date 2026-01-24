@@ -169,22 +169,6 @@ public:
 		return _account_balance;
 	}
 
-	//print method
-	void print()
-	{
-		cout << "\nClient Card:";
-		cout << "\n___________________";
-		cout << "\nFirstName   : " << get_first_name();
-		cout << "\nLastName    : " << get_last_name();
-		cout << "\nFull Name   : " << get_full_name();
-		cout << "\nEmail       : " << get_email();
-		cout << "\nPhone       : " << get_phone();
-		cout << "\nAcc. Number : " << _account_number;
-		cout << "\nPassword    : " << _pin_code;
-		cout << "\nBalance     : " << _account_balance;
-		cout << "\n___________________\n";
-	}
-
 	//find client method
 	static clsBankClient find(string account_number)
 	{

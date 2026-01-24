@@ -1,8 +1,14 @@
 #pragma once
 #include <iostream>
 #include <iomanip>
-#include "clsScreen.h"
 #include "clsInputValidate.h"
+#include "clsScreen.h"
+#include "clsClientListScreen.h"
+#include "clsAddNewClientScreen.h"
+#include "clsDeleteClientScreen.h"
+#include "clsUpdateClientScreen.h"
+#include "clsFindClientScreen.h"
+
 
 using namespace std;
 
@@ -35,37 +41,27 @@ private:
 
     static void _show_all_clients_screen()
     {
-        cout << "\nClient List Screen Will be here...\n";
+        clsClientListScreen::show_client_list();
     }
 
     static void _show_add_new_clients_screen()
     {
-        cout << "\nAdd New Client Screen Will be here...\n";
+        clsAddNewClientScreen::add_new_client();
     }
 
     static void _show_delete_clients_screen()
     {
-        cout << "\nDelete Client Screen Will be here...\n";
+        clsDeleteClientScreen::show_delete_client_screen();
     }
 
     static void _show_update_clients_screen()
     {
-        cout << "\nUpdate Client Screen Will be here...\n";
+        clsUpdateClientScreen::show_update_client_screen();
     }
 
     static void _show_find_clients_screen()
     {
-        cout << "\nFind Client Screen Will be here...\n";
-    }
-
-    static void _show_transactions_menue()
-    {
-        cout << "\n Transactions Menue Will be here...\n";
-    }
-
-    static void _show_manage_users_menue()
-    {
-        cout << "\nUsers Menue Will be here...\n";
+        clsFindClientScreen::show_find_client_screen();
     }
 
     static void _show_end_screen()
@@ -102,19 +98,8 @@ private:
             _show_find_clients_screen();
             _go_back_to_main_menue();
             break;
-        case clsMainScreen::etransactions:
-            system("cls");
-            _show_transactions_menue();
-            _go_back_to_main_menue();
-            break;
-        case clsMainScreen::emanage_users:
-            system("cls");
-            _show_manage_users_menue();
-            _go_back_to_main_menue();
-            break;
         case clsMainScreen::eexit:
             system("cls");
-            _show_end_screen();
             //logout
             break;
         }
@@ -136,8 +121,6 @@ public:
         cout << setw(37) << left << "" << "\t[3] Delete Client.\n";
         cout << setw(37) << left << "" << "\t[4] Update Client Info.\n";
         cout << setw(37) << left << "" << "\t[5] Find Client.\n";
-        cout << setw(37) << left << "" << "\t[6] Transactions.\n";
-        cout << setw(37) << left << "" << "\t[7] Manage Users.\n";
         cout << setw(37) << left << "" << "\t[8] Logout.\n";
         cout << setw(37) << left << "" << "===========================================\n";
 
