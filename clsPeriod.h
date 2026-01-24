@@ -35,6 +35,14 @@ public:
         return is_overlap_periods(*this, period2);
     }
 
+
+    static bool is_date_in_period(clsPeriod period, clsDate date)
+    {
+        return !(clsDate::compare_dates(date, period.start_date) == clsDate::before
+            ||
+            clsDate::compare_dates(date, period.end_date) == clsDate::after);
+    }
+
     void Print()
     {
         cout << "Period Start: ";

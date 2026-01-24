@@ -52,6 +52,30 @@ public:
 		return number;
 	}
 
+	static short read_short_number(string error_massege = "Invalid Number, Enter again")
+	{
+		short number = 0;
+		while (!(cin >> number))
+		{
+			cin.clear();
+			cin.ignore(numeric_limits <streamsize>::max(), '\n');
+			cout << error_massege << endl;
+		}
+		return number;
+	}
+
+	static float read_float_number(string error_massege = "Invalid Number, Enter again")
+	{
+		float number = 0;
+		while (!(cin >> number))
+		{
+			cin.clear();
+			cin.ignore(numeric_limits <streamsize>::max(), '\n');
+			cout << error_massege << endl;
+		}
+		return number;
+	}
+
 	static double read_dbl_number(string error_massege = "Invalid Number, Enter again")
 	{
 		double number = 0.0;
@@ -75,6 +99,17 @@ public:
 		return number;
 	}
 
+	static short read_short_number_between(short from, short to, string error_massege = "Number is not within range, Enter again:")
+	{
+		short number = read_short_number();
+		while (!is_number_between(number, from, to))
+		{
+			cout << error_massege << endl;
+			number = read_short_number();
+		}
+		return number;
+	}
+
 	static double read_dbl_number_between(double from, double to, string error_massege = "Number is not within range, Enter again:")
 	{
 		double number = read_dbl_number();
@@ -88,6 +123,13 @@ public:
 
 	static bool is_validate_date(clsDate date) {
 		return clsDate::is_validate_date(date);
+	}
+
+	static string read_string()
+	{
+		string s1 = "";
+		getline(cin >> ws, s1);
+		return s1;
 	}
 
 };
