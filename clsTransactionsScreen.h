@@ -5,6 +5,7 @@
 #include "clsInputValidate.h"
 #include "clsDepositScreen.h"
 #include "clsWithdrawScreen.h"
+#include "clsTotalBalancesScreen.h"
 
 using namespace std;
 
@@ -38,7 +39,7 @@ private:
 
     static void _show_total_balances_screen()
     {
-        cout << "\n Total Balances Screen will be here.\n";
+        clsTotalBalancesScreen::show_total_balances();
     }
 
     static void _go_back_to_transactions_menue()
@@ -68,6 +69,7 @@ private:
             _go_back_to_transactions_menue();
             break;
         default:
+            //the main menue shown 
             break;
         }
     }

@@ -165,7 +165,7 @@ public:
 	}
 
 	//problem 33
-	static void fill_array_with_keys(string keys[], short number_of_keys, en_char_type char_type)
+	static void fill_array_with_random_keys(string keys[], short number_of_keys, en_char_type char_type)
 	{
 		for (int i = 0; i < number_of_keys; i++)
 		{
@@ -186,7 +186,7 @@ public:
 
 	//problem 18
 
-	static string encryption_text(string text, short key)
+	static string encryption_text(string text, short key = 15)
 	{
 
 		for (int i = 0; i < text.length(); i++)
@@ -197,7 +197,7 @@ public:
 		return text;
 	}
 
-	static string decryption_text(string text, short key)
+	static string decryption_text(string text, short key = 15)
 	{
 
 		for (int i = 0; i < text.length(); i++)
@@ -206,6 +206,70 @@ public:
 		}
 
 		return text;
+	}
+
+	//problem 1
+	static string number_to_text(long long number)
+	{
+		if (number == 0)
+		{
+			return "";
+		}
+
+		if (number >= 1 && number <= 19)
+		{
+			string array[] = { "","One","Two","Three","Four","Five","Six","Seven","Eight","Nine",
+			"Ten","Eleven","Twelve","Thirteen","Fourteen","Fivteen","Sixteen",
+				"Seventeen","Eighteen","Nineteen" };
+
+			return array[number];
+		}
+
+		if (number >= 20 && number <= 99)
+		{
+			string array[] = { "","","Twenty","Thirty","Fourty","Fivty","Sixty","Seventy","Eighty","Ninety" };
+
+			return array[number / 10] + " " + number_to_text(number % 10);
+		}
+
+		if (number >= 100 && number <= 199)
+		{
+			return "One Hundred " + number_to_text(number % 100);
+		}
+
+		if (number >= 200 && number <= 999)
+		{
+			return number_to_text(number / 100) + " Hundreds " + number_to_text(number % 100);
+		}
+
+		if (number >= 1000 && number <= 1999)
+		{
+			return "One Thousand " + number_to_text(number % 1000);
+		}
+
+		if (number >= 2000 && number <= 999999)
+		{
+			return number_to_text(number / 1000) + " Thousands " + number_to_text(number % 1000);
+		}
+
+		if (number >= 1000000 && number <= 1999999)
+		{
+			return "One Milion " + number_to_text(number % 1000000);
+		}
+
+		if (number >= 2000000 && number <= 999999999)
+		{
+			return number_to_text(number / 1000000) + " Milions " + number_to_text(number % 1000000);
+		}
+
+		if (number >= 1000000000 && number <= 1999999999)
+		{
+			return "One Bilion" + number_to_text(number % 1000000000);
+		}
+		else
+		{
+			return number_to_text(number / 1000000000) + " Bilions " + number_to_text(number % 1000000000);
+		}
 	}
 
 
