@@ -292,6 +292,27 @@ public:
 		return total_balances;
 	}
 
+	//transaction choice
+	void deposit(double amount)
+	{
+		_account_balance += amount;
+		save();
+	}
+
+	bool withdraw(double amount)
+	{
+		if (amount > _account_balance)
+		{
+			return false;
+		}
+		else
+		{
+			_account_balance -= amount;
+			save();
+			return true;
+		}
+	}
+
 
 };
 
