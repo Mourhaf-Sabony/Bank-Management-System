@@ -9,6 +9,7 @@
 #include "clsUpdateClientScreen.h"
 #include "clsFindClientScreen.h"
 #include "clsTransactionsScreen.h"
+#include "clsManageUsersScreen.h"
 
 
 using namespace std;
@@ -70,6 +71,10 @@ private:
         clsTransactionsScreen::show_transactions_menue();
     }
 
+    static void _show_manage_users_menue()
+    {
+        clsManageUsersScreen::show_manage_user_menue();
+    }
 
     static void _show_end_screen()
     {
@@ -110,9 +115,14 @@ private:
             _show_transactions_menue();
             _go_back_to_main_menue();
             break;
+        case clsMainScreen::emanage_users:
+            system("cls");
+            _show_manage_users_menue();
+            _go_back_to_main_menue();
+            break;
         case clsMainScreen::eexit:
             system("cls");
-
+            _show_end_screen();
             //logout
             break;
         }
@@ -135,6 +145,7 @@ public:
         cout << setw(37) << left << "" << "\t[4] Update Client Info.\n";
         cout << setw(37) << left << "" << "\t[5] Find Client.\n";
         cout << setw(37) << left << "" << "\t[6] Transactions.\n";
+        cout << setw(37) << left << "" << "\t[7] Manage Users.\n";
         cout << setw(37) << left << "" << "\t[8] Logout.\n";
         cout << setw(37) << left << "" << "===========================================\n";
 
