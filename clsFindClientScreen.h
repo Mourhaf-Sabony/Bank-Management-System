@@ -28,6 +28,10 @@ public:
 
     static void show_find_client_screen()
     {
+        if (!check_access_rights(clsUser::en_permissions::efind_client))
+        {
+            return;//this will exit the function and it will not continue
+        }
         _draw_screen_header("\t Find Cient Screen");
 
 

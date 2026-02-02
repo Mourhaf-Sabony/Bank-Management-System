@@ -54,6 +54,10 @@ public:
 
     static void add_new_client()
     {
+        if (!check_access_rights(clsUser::en_permissions::eadd_new_client))
+        {
+            return;//this will exit the function and it will not continue
+        }
         _draw_screen_header("\t  Add New Client Screen");
 
 

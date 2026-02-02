@@ -50,6 +50,10 @@ public:
 
     static void show_update_client_screen()
     {
+        if (!check_access_rights(clsUser::en_permissions::eupdate_client_info))
+        {
+            return;//this will exit the function and it will not continue
+        }
         _draw_screen_header("\t Update Client Screen");
         string account_number = "";
 

@@ -25,6 +25,11 @@ public:
 
     static void show_client_list()
     {
+
+        if (!check_access_rights(clsUser::en_permissions::eshow_client_list))
+        {
+            return;//this will exit the function and it will not continue
+        }
         vector <clsBankClient> vclients = clsBankClient::get_client_list();
 
         string title = "\t  Client List Screen";

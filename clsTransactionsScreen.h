@@ -79,6 +79,10 @@ public:
 
     static void show_transactions_menue()
     {
+        if (!check_access_rights(clsUser::en_permissions::etransactions))
+        {
+            return;//this will exit the function and it will not continue
+        }
         system("cls");
         _draw_screen_header("\t  Transactions Screen");
 

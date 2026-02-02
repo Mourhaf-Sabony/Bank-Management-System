@@ -5,7 +5,6 @@
 #include <fstream>
 #include "clsPerson.h"
 #include "clsString.h"
-#include "clsUtil.h"
 
 using namespace std;
 class clsUser : public clsPerson
@@ -293,6 +292,18 @@ public:
 				return ensave_result::svsucceded;
 			}
 		}
+	}
+
+
+	bool check_access_permission(en_permissions permisssion)
+	{
+		if (this->get_permission() == en_permissions::eall)
+			return true;
+
+		if ((this->get_permission() & permisssion) == permisssion)
+			return true;
+		else
+			return false;
 	}
 
 };

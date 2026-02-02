@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include "clsUser.h"
+#include "Global.h"
 
 using namespace std;
 
@@ -16,6 +18,19 @@ protected:
             cout << "\n\t\t\t\t\t  " << sub_title;
         }
         cout << "\n\t\t\t\t\t______________________________________\n\n";
+    }
+
+    static bool check_access_rights(clsUser::en_permissions permission)
+    {
+        if (!current_user.check_access_permission(permission))
+        {
+            cout << "\t\t\t\t\t______________________________________";
+            cout << "\n\n\t\t\t\t\t  Access Denied! Contact your Admin.";
+            cout << "\n\t\t\t\t\t______________________________________\n\n";
+            return false;
+        }
+        else
+            return true;
     }
 };
 
