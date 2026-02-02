@@ -8,11 +8,13 @@ using namespace std;
 int main()
 
 {
+	while (true)
+	{
+		clsLoginScreen::show_login_screen();
+	}
 
-    clsLoginScreen::show_login_screen();
-
-    system("pause>0");
-    return 0;
+	system("pause>0");
+	return 0;
 
 }
 
