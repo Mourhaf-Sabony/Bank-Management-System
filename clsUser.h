@@ -139,6 +139,20 @@ private:
 
 	}
 
+	struct stlogin_register_record;
+	static stlogin_register_record _convert_login_register_line_to_record(string line, string seperator = "#//#")
+	{
+		stlogin_register_record login_register_record;
+
+
+		vector <string> vlogin_data_line = clsString::split(line, seperator);
+		login_register_record.date_time = vlogin_data_line[0];
+		login_register_record.user_name = vlogin_data_line[1];
+		login_register_record.password = vlogin_data_line[2];
+		login_register_record.permissions = stoi(vlogin_data_line[3]);
+
+		return login_register_record;
+	}
 
 
 public:
@@ -146,6 +160,14 @@ public:
 	enum en_permissions {
 		eall = -1, eshow_client_list = 1, eadd_new_client = 2, edelete_client_info = 4,
 		eupdate_client_info = 8, efind_client = 16, etransactions = 32, emanage_users = 64
+	};
+
+
+	struct stlogin_register_record {
+		string date_time;
+		string user_name;
+		string password;
+		int permissions;
 	};
 
 	//The Constructor
@@ -333,6 +355,29 @@ public:
 			myfile << stline << endl;
 			myfile.close();
 		}
+	}
+
+	static vector <stlogin_register_record> get_login_register_list()
+	{
+		vector <stlogin_register_record> vlogin_register_record;
+
+		fstream myfile;
+
+		myfile.open("LoginRegister.txt", ios::in); //read Mode
+
+		if (myfile.is_open())
+		{
+			string line;
+			stlogin_register_record login_record;
+			while (getline(myfile, line))
+			{
+				login_record = _convert_login_register_line_to_record(line);
+				vlogin_register_record.push_back(login_record);
+			}
+			myfile.close();
+		}
+
+		return vlogin_register_record;
 	}
 
 };
