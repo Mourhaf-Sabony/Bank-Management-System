@@ -6,6 +6,7 @@
 #include "clsDepositScreen.h"
 #include "clsWithdrawScreen.h"
 #include "clsTotalBalancesScreen.h"
+#include "clsTransferScreen.h"
 
 using namespace std;
 
@@ -16,13 +17,13 @@ private:
 
     enum en_transactions_menue_options {
         edeposit = 1, ewithdraw = 2,
-        etotal_balances = 3, emain_menue = 4
+        etotal_balances = 3, etransfer = 4, emain_menue = 5
     };
 
     static short _read_transactions_menue_option()
     {
-        cout << setw(37) << left << "" << "Choose what do you want to do? [1 to 4]? ";
-        short choice = clsInputValidate::read_short_number_between(1, 4, "Enter a Number between 1 to 4? ");
+        cout << setw(37) << left << "" << "Choose what do you want to do? [1 to 5]? ";
+        short choice = clsInputValidate::read_short_number_between(1, 5, "Enter a Number between 1 to 5? ");
         return choice;
 
     }
@@ -40,6 +41,11 @@ private:
     static void _show_total_balances_screen()
     {
         clsTotalBalancesScreen::show_total_balances();
+    }
+
+    static void _show_transfer_screen()
+    {
+        clsTransferScreen::_show_transfer_screen();
     }
 
     static void _go_back_to_transactions_menue()
@@ -68,6 +74,11 @@ private:
             _show_total_balances_screen();
             _go_back_to_transactions_menue();
             break;
+        case clsTransactionsScreen::etransfer:
+            system("cls");
+            _show_transfer_screen();
+            _go_back_to_transactions_menue();
+            break;
         default:
             //the main menue shown 
             break;
@@ -92,7 +103,8 @@ public:
         cout << setw(37) << left << "" << "\t[1] Deposit.\n";
         cout << setw(37) << left << "" << "\t[2] Withdraw.\n";
         cout << setw(37) << left << "" << "\t[3] Total Balances.\n";
-        cout << setw(37) << left << "" << "\t[4] Main Menue.\n";
+        cout << setw(37) << left << "" << "\t[4] Transfer.\n";
+        cout << setw(37) << left << "" << "\t[5] Main Menue.\n";
         cout << setw(37) << left << "" << "===========================================\n";
 
 

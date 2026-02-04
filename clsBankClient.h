@@ -314,5 +314,16 @@ public:
 	}
 
 
+	bool transfer(double amount, clsBankClient& destination_client)
+	{
+		if (amount > _account_balance)
+		{
+			return false;
+		}
+
+		withdraw(amount);
+		destination_client.deposit(amount);
+		return true;
+	}
 };
 
