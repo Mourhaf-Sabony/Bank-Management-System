@@ -123,6 +123,38 @@ private:
 		return clsBankClient(enmode::empty_mode, "", "", "", "", "", "", 0.0);
 	}
 
+
+	string _prepare_transfer_log_record(clsBankClient destination_client, double amount, string user_name, string seperator = "#//#")
+	{
+		string transfer_log_record = "";
+
+		transfer_log_record += clsDate::get_system_date_time_string() + seperator;
+		transfer_log_record += get_account_number() + seperator;
+		transfer_log_record += destination_client.get_account_number() + seperator;
+		transfer_log_record += to_string(amount) + seperator;
+		transfer_log_record += to_string(get_account_balance()) + seperator;
+		transfer_log_record += to_string(destination_client.get_account_balance()) + seperator;
+		transfer_log_record += user_name;
+
+		return transfer_log_record;
+	}
+
+
+	void _register_transfer_log(clsBankClient destination_client, double amount, string user_name)
+	{
+		string stline = _prepare_transfer_log_record(destination_client, amount, user_name);
+
+		fstream myfile;
+
+		myfile.open("TransferLog.txt", ios::out | ios::app);
+		if (myfile.is_open())
+		{
+			myfile << stline << endl;
+			myfile.close();
+		}
+	}
+
+
 public:
 
 	//The constructor
@@ -313,8 +345,7 @@ public:
 		}
 	}
 
-
-	bool transfer(double amount, clsBankClient& destination_client)
+	bool transfer(double amount, clsBankClient& destination_client, string user_name)
 	{
 		if (amount > _account_balance)
 		{
@@ -323,7 +354,9 @@ public:
 
 		withdraw(amount);
 		destination_client.deposit(amount);
+		_register_transfer_log(destination_client, amount, user_name);
 		return true;
 	}
+
 };
 

@@ -3,6 +3,7 @@
 #include "clsScreen.h"
 #include "clsBankClient.h"
 #include "clsInputValidate.h"
+#include "Global.h"
 
 using namespace std;
 class clsTransferScreen : protected clsScreen
@@ -46,7 +47,7 @@ public:
 
         while (!clsBankClient::is_client_exsist(account_number2))
         {
-            cout << "\nClient with [" << account_number2 << "] does not exist.\n";
+            cout << "\nClient with [" << account_number2 << "] does not exist.Enter again\n";
             account_number2 = clsInputValidate::read_string();
         }
 
@@ -69,8 +70,10 @@ public:
 
         if (toupper(answer) == 'Y')
         {
-            if (source_client.transfer(amount, destination_client))
+            if (source_client.transfer(amount, destination_client, current_user.get_user_name()))
+            {
                 cout << "\nAmount Withdrew Successfully.\n";
+            }
             else
                 cout << "\nTransfer Faild\n";
 
