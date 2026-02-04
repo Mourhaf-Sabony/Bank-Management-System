@@ -2,6 +2,7 @@
 #include <iostream>
 #include "clsUser.h"
 #include "Global.h"
+#include "clsDate.h"
 
 using namespace std;
 
@@ -18,6 +19,8 @@ protected:
             cout << "\n\t\t\t\t\t  " << sub_title;
         }
         cout << "\n\t\t\t\t\t______________________________________\n\n";
+        cout << "\t\t\t\t\tUser: " << current_user.get_user_name() << endl;
+        cout << "\t\t\t\t\tDate: " << clsDate::date_to_string(clsDate()) << endl;
     }
 
     static bool check_access_rights(clsUser::en_permissions permission)
