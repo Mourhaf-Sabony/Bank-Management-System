@@ -47,7 +47,7 @@ private:
 
 		} while (login_faild);
 
-
+		current_user.register_login();
 		clsMainScreen::show_main_menue();
 	}
 public:

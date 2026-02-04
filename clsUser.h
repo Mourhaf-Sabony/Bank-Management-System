@@ -5,6 +5,7 @@
 #include <fstream>
 #include "clsPerson.h"
 #include "clsString.h"
+#include "clsUtil.h"
 
 using namespace std;
 class clsUser : public clsPerson
@@ -122,6 +123,20 @@ private:
 	static clsUser _get_empty_user_object()
 	{
 		return clsUser(enmode::empty_mode, "", "", "", "", "", "", 0);
+	}
+
+
+	string _prepare_login_record(string seperator = "#//#")
+	{
+		string login_record = "";
+
+		login_record += clsDate::get_system_date_time_string() + seperator;
+		login_record += _user_name + seperator;
+		login_record += _password + seperator;
+		login_record += to_string(_permissions);
+
+		return login_record;
+
 	}
 
 
@@ -304,6 +319,20 @@ public:
 			return true;
 		else
 			return false;
+	}
+
+	void register_login()
+	{
+		string stline = _prepare_login_record();
+
+		fstream myfile;
+
+		myfile.open("LoginRegister.txt", ios::out | ios::app);
+		if (myfile.is_open())
+		{
+			myfile << stline << endl;
+			myfile.close();
+		}
 	}
 
 };
