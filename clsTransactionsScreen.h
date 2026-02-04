@@ -7,6 +7,7 @@
 #include "clsWithdrawScreen.h"
 #include "clsTotalBalancesScreen.h"
 #include "clsTransferScreen.h"
+#include "clsTransferLogScreen.h"
 
 using namespace std;
 
@@ -17,13 +18,13 @@ private:
 
     enum en_transactions_menue_options {
         edeposit = 1, ewithdraw = 2,
-        etotal_balances = 3, etransfer = 4, emain_menue = 5
+        etotal_balances = 3, etransfer = 4, etransfer_log = 5, emain_menue = 6
     };
 
     static short _read_transactions_menue_option()
     {
-        cout << setw(37) << left << "" << "Choose what do you want to do? [1 to 5]? ";
-        short choice = clsInputValidate::read_short_number_between(1, 5, "Enter a Number between 1 to 5? ");
+        cout << setw(37) << left << "" << "Choose what do you want to do? [1 to 6]? ";
+        short choice = clsInputValidate::read_short_number_between(1, 6, "Enter a Number between 1 to 6? ");
         return choice;
 
     }
@@ -46,6 +47,11 @@ private:
     static void _show_transfer_screen()
     {
         clsTransferScreen::_show_transfer_screen();
+    }
+
+    static void _show_transfer_log_screen()
+    {
+        clsTransferLogScreen::show_transfer_log_screen();
     }
 
     static void _go_back_to_transactions_menue()
@@ -79,6 +85,11 @@ private:
             _show_transfer_screen();
             _go_back_to_transactions_menue();
             break;
+        case clsTransactionsScreen::etransfer_log:
+            system("cls");
+            _show_transfer_log_screen();
+            _go_back_to_transactions_menue();
+            break;
         default:
             //the main menue shown 
             break;
@@ -104,7 +115,8 @@ public:
         cout << setw(37) << left << "" << "\t[2] Withdraw.\n";
         cout << setw(37) << left << "" << "\t[3] Total Balances.\n";
         cout << setw(37) << left << "" << "\t[4] Transfer.\n";
-        cout << setw(37) << left << "" << "\t[5] Main Menue.\n";
+        cout << setw(37) << left << "" << "\t[5] Transfer Log.\n";
+        cout << setw(37) << left << "" << "\t[6] Main Menue.\n";
         cout << setw(37) << left << "" << "===========================================\n";
 
 

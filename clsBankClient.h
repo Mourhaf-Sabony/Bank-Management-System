@@ -154,8 +154,37 @@ private:
 		}
 	}
 
+	struct sttransfer_log_record;
+	static sttransfer_log_record _convert_transfer_login_line_to_record(string line, string seperator = "#//#")
+	{
+		sttransfer_log_record transfer_log_record;
+
+
+		vector <string> vtransfer_log_line = clsString::split(line, seperator);
+		transfer_log_record.date_time = vtransfer_log_line[0];
+		transfer_log_record.source_account_number = vtransfer_log_line[1];
+		transfer_log_record.destination_account_number = vtransfer_log_line[2];
+		transfer_log_record.amount = stod(vtransfer_log_line[3]);
+		transfer_log_record.src_balance_after = stod(vtransfer_log_line[4]);
+		transfer_log_record.dest_balance_after = stod(vtransfer_log_line[5]);
+		transfer_log_record.user_name = vtransfer_log_line[6];
+
+		return transfer_log_record;
+	}
+
+
 
 public:
+
+	struct sttransfer_log_record {
+		string date_time;
+		string source_account_number;
+		string destination_account_number;
+		double amount;
+		double src_balance_after;
+		double dest_balance_after;
+		string user_name;
+	};
 
 	//The constructor
 	clsBankClient(enmode mode, string first_name, string last_name, string email, string phone, string account_number, string pin_code, float account_balance)
@@ -358,5 +387,28 @@ public:
 		return true;
 	}
 
+
+	static vector <sttransfer_log_record> get_transfer_log_list()
+	{
+		vector <sttransfer_log_record> vtransfer_log_record;
+
+		fstream myfile;
+
+		myfile.open("TransferLog.txt", ios::in); //read Mode
+
+		if (myfile.is_open())
+		{
+			string line;
+			sttransfer_log_record transfer_record;
+			while (getline(myfile, line))
+			{
+				transfer_record = _convert_transfer_login_line_to_record(line);
+				vtransfer_log_record.push_back(transfer_record);
+			}
+			myfile.close();
+		}
+
+		return vtransfer_log_record;
+	}
 };
 
