@@ -159,7 +159,7 @@ public:
 
 	enum en_permissions {
 		eall = -1, eshow_client_list = 1, eadd_new_client = 2, edelete_client_info = 4,
-		eupdate_client_info = 8, efind_client = 16, etransactions = 32, emanage_users = 64
+		eupdate_client_info = 8, efind_client = 16, etransactions = 32, emanage_users = 64, elogin_register = 128
 	};
 
 

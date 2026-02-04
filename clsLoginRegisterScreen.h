@@ -21,6 +21,10 @@ public:
 
     static void show_login_register_screen()
     {
+        if (!check_access_rights(clsUser::en_permissions::elogin_register))
+        {
+            return;//this will exit the function and it will not continue
+        }
         vector <clsUser::stlogin_register_record> vlogin_register_record = clsUser::get_login_register_list();
 
         string title = "\t  Login Register List Screen";

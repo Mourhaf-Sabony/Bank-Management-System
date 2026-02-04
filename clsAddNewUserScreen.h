@@ -100,6 +100,13 @@ private:
 			permissions |= clsUser::emanage_users;
 		}
 
+		cout << "\nLogin Register? y/n? \n";
+		cin >> answer;
+		if (toupper(answer) == 'Y')
+		{
+			permissions |= clsUser::elogin_register;
+		}
+
 		return permissions;
 	}
 
