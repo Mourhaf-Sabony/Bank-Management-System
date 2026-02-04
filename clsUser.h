@@ -6,6 +6,7 @@
 #include "clsPerson.h"
 #include "clsString.h"
 #include "clsUtil.h"
+#include "clsBankClient.h"
 
 using namespace std;
 class clsUser : public clsPerson
@@ -26,7 +27,7 @@ private:
 	{
 		vector <string> vuser_data = clsString::split(line, "#//#");
 
-		return clsUser(enmode::update_mode, vuser_data[0], vuser_data[1], vuser_data[2], vuser_data[3], vuser_data[4], vuser_data[5], stoi(vuser_data[6]));
+		return clsUser(enmode::update_mode, vuser_data[0], vuser_data[1], vuser_data[2], vuser_data[3], vuser_data[4], clsUtil::decryption_text(vuser_data[5]), stoi(vuser_data[6]));
 	}
 
 	static string _convert_user_object_to_line(clsUser user, string seperator = "#//#")
@@ -37,7 +38,7 @@ private:
 		user_record += user.get_email() + seperator;
 		user_record += user.get_phone() + seperator;
 		user_record += user.get_user_name() + seperator;
-		user_record += user.get_password() + seperator;
+		user_record += clsUtil::encryption_text(user.get_password()) + seperator;
 		user_record += to_string(user.get_permission());
 
 		return user_record;
@@ -132,7 +133,7 @@ private:
 
 		login_record += clsDate::get_system_date_time_string() + seperator;
 		login_record += _user_name + seperator;
-		login_record += _password + seperator;
+		login_record += clsUtil::encryption_text(_password) + seperator;
 		login_record += to_string(_permissions);
 
 		return login_record;
@@ -148,11 +149,12 @@ private:
 		vector <string> vlogin_data_line = clsString::split(line, seperator);
 		login_register_record.date_time = vlogin_data_line[0];
 		login_register_record.user_name = vlogin_data_line[1];
-		login_register_record.password = vlogin_data_line[2];
+		login_register_record.password = clsUtil::decryption_text(vlogin_data_line[2]);
 		login_register_record.permissions = stoi(vlogin_data_line[3]);
 
 		return login_register_record;
 	}
+
 
 
 public:
@@ -169,6 +171,7 @@ public:
 		string password;
 		int permissions;
 	};
+
 
 	//The Constructor
 	clsUser(enmode mode, string first_name, string last_name, string email, string phone, string user_name, string password, int permissions)
@@ -343,6 +346,8 @@ public:
 			return false;
 	}
 
+
+	//login register methods
 	void register_login()
 	{
 		string stline = _prepare_login_record();
@@ -379,6 +384,8 @@ public:
 
 		return vlogin_register_record;
 	}
+
+
 
 };
 
