@@ -206,5 +206,15 @@ public:
 		return _load_currencys_data_from_file();
 	}
 
+	float conver_to_usd(float amount)
+	{
+		return float(amount / get_rate());
+	}
+
+	float convert_to_other_currency(float amount, clsCurrency currecny_to)
+	{
+		return  (currecny_to.get_rate() * float(amount / get_rate()));
+	}
+
 };
 
