@@ -71,7 +71,7 @@ private:
 			for (clsCurrency& C : vcurrencys)
 			{
 				line = _convert_currency_object_to_line(C);
-				cout << line << endl;
+				myfile << line << endl;
 			}
 			myfile.close();
 		}
