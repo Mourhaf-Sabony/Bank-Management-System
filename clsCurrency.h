@@ -22,7 +22,7 @@ private:
 	{
 		string currency_record = "";
 		currency_record += currency.get_country() + seperator;
-		currency_record += currency.get_country_code() + seperator;
+		currency_record += currency.get_currency_code() + seperator;
 		currency_record += currency.get_currency_name() + seperator;
 		currency_record += to_string(currency.get_rate());
 
