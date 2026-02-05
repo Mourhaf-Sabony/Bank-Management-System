@@ -3,6 +3,7 @@
 #include "clsScreen.h"
 #include "clsInputValidate.h"
 #include "clsListCurrenciesScreen.h"
+#include "clsFindCurrencyScreen.h"
 
 using namespace std;
 class clsCurrencyExchangeScreen : protected clsScreen
@@ -34,7 +35,7 @@ private:
 
     static void _show_find_currency_screen()
     {
-        cout << "Find Currency Will Be Here.....\n";
+        clsFindCurrencyScreen::show_find_currency_screen();
     }
 
     static void _show_update_rate_screen()
