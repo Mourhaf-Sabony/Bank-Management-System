@@ -107,6 +107,12 @@ private:
 			permissions |= clsUser::elogin_register;
 		}
 
+		cout << "\nCurrency Exchange? y/n? \n";
+		cin >> answer;
+		if (toupper(answer) == 'Y')
+		{
+			permissions |= clsUser::ecurrency_exchange;
+		}
 
 		return permissions;
 	}
