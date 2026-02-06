@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class clsWithdrawScreen : protected clsScreen
+class clsWithdrawScreen: protected clsScreen
 {
 private:
 
@@ -29,8 +29,8 @@ private:
 
 public:
 
-    static void show_withdraw_screen()
-    {
+	static void show_withdraw_screen()
+	{
         _draw_screen_header("\t  Withdraw Screen");
         cout << "\nenter Account number:";
         string account_number = clsInputValidate::read_string();
@@ -46,7 +46,7 @@ public:
         _print_client(client1);
 
         cout << "\nenter withdraw amount?";
-        double amount = clsInputValidate::read_dbl_number("enter a number?");
+        double amount = clsInputValidate::read_number<double>("enter a number?");
 
         char answer = 'n';
         cout << "\nAre you sure you want to perform this transaction? ";
@@ -69,6 +69,6 @@ public:
         }
         else
             cout << "\nOPeration was cancelled.\n";
-    }
+	}
 };
 

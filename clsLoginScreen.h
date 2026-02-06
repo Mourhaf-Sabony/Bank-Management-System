@@ -19,7 +19,7 @@ private:
 
 		do
 		{
-
+			
 
 			if (login_faild)
 			{
@@ -33,15 +33,15 @@ private:
 				cout << "\nYour are Locked after 3 faild trails\n";
 				return false;
 			}
-
+			
 			cout << "\nEnter User Name: ";
 			user_name = clsInputValidate::read_string();
-
+			
 			cout << "\nEnter Password: ";
 			password = clsInputValidate::read_string();
 
 			current_user = clsUser::find(user_name, password);
-
+			 
 			login_faild = current_user.is_empty();
 
 
@@ -50,9 +50,9 @@ private:
 		current_user.register_login();
 		clsMainScreen::show_main_menue();
 	}
-public:
+public: 
 
-
+	
 
 	static bool show_login_screen()
 	{

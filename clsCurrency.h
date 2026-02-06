@@ -9,7 +9,7 @@ using namespace std;
 class clsCurrency
 {
 private:
-
+	
 	enum enmode { empty_mode = 0, update_mode = 1 };
 	enmode _mode;
 
@@ -18,7 +18,7 @@ private:
 	string _currency_name;
 	float _rate;
 
-	string _convert_currency_object_to_line(clsCurrency currency, string seperator = "#//#")
+	string _convert_currency_object_to_line(clsCurrency currency,string seperator = "#//#")
 	{
 		string currency_record = "";
 		currency_record += currency.get_country() + seperator;
@@ -31,7 +31,7 @@ private:
 
 	static clsCurrency _convert_line_to_currency_object(string line, string seperator = "#//#")
 	{
-		vector <string> vcurrency_data = clsString::split(line, seperator);
+		vector <string> vcurrency_data = clsString::split(line,seperator);
 
 		return clsCurrency(enmode::update_mode, vcurrency_data[0], vcurrency_data[1], vcurrency_data[2], stof(vcurrency_data[3]));
 	}
@@ -41,13 +41,13 @@ private:
 		vector <clsCurrency> vcurrencys;
 
 		fstream myfile;
-
+		
 		myfile.open("Currencies.txt", ios::in);//read mode
 
 		if (myfile.is_open())
 		{
 			string line;
-
+			
 			while (getline(myfile, line))
 			{
 				clsCurrency currency = _convert_line_to_currency_object(line);
@@ -213,7 +213,7 @@ public:
 
 	float convert_to_other_currency(float amount, clsCurrency currecny_to)
 	{
-		return  (currecny_to.get_rate() * float(amount / get_rate()));
+		return  (currecny_to.get_rate() * float (amount / get_rate()));
 	}
 
 };

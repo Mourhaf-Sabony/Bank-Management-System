@@ -5,26 +5,26 @@
 #include "clsInputValidate.h"
 
 using namespace std;
-class clsFindUserScreen : protected clsScreen
+class clsFindUserScreen: protected clsScreen
 {
 
 private:
 
-    static void _print_user(clsUser user)
-    {
-        cout << "\nUser Card:";
-        cout << "\n___________________";
-        cout << "\nFirstName   : " << user.get_first_name();
-        cout << "\nLastName    : " << user.get_last_name();
-        cout << "\nFull Name   : " << user.get_full_name();
-        cout << "\nEmail       : " << user.get_email();
-        cout << "\nPhone       : " << user.get_phone();
-        cout << "\nUser Name   : " << user.get_user_name();
-        cout << "\nPassword    : " << user.get_password();
-        cout << "\nPermissions : " << user.get_permission();
-        cout << "\n___________________\n";
+	static void _print_user(clsUser user)
+	{
+		cout << "\nUser Card:";
+		cout << "\n___________________";
+		cout << "\nFirstName   : " << user.get_first_name();
+		cout << "\nLastName    : " << user.get_last_name();
+		cout << "\nFull Name   : " << user.get_full_name();
+		cout << "\nEmail       : " << user.get_email();
+		cout << "\nPhone       : " << user.get_phone();
+		cout << "\nUser Name   : " << user.get_user_name();
+		cout << "\nPassword    : " << user.get_password();
+		cout << "\nPermissions : " << user.get_permission();
+		cout << "\n___________________\n";
 
-    }
+	}
 
 public:
 

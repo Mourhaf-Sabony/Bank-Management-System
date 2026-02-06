@@ -23,7 +23,7 @@ private:
     static short _read_manage_user_menue_option()
     {
         cout << setw(37) << left << "" << "Choose what do you want to do? [1 to 6]? ";
-        short choice = clsInputValidate::read_short_number_between(1, 6, "enter number between 1 to 6");
+        short choice = clsInputValidate::read_number_between<short>(1, 6, "enter number between 1 to 6");
         return choice;
     }
 
@@ -97,14 +97,14 @@ private:
 
 public:
 
-    static void show_manage_user_menue()
-    {
+	static void show_manage_user_menue()
+	{
         if (!check_access_rights(clsUser::en_permissions::emanage_users))
         {
             return;//this will exit the function and it will not continue
         }
-        system("cls");
-        _draw_screen_header("\t Manage Users Screen");
+		system("cls");
+		_draw_screen_header("\t Manage Users Screen");
 
         cout << setw(37) << left << "" << "===========================================\n";
         cout << setw(37) << left << "" << "\t\t  Manage Users Menue\n";
@@ -119,6 +119,6 @@ public:
 
 
         _perform_manage_user_menue_option((en_manage_users_menue_options)_read_manage_user_menue_option());
-    }
+	}
 };
 

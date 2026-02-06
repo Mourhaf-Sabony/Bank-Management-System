@@ -12,7 +12,7 @@ class clsUtil
 public:
 
 
-	enum en_char_type { smal_letter = 1, capital_letter = 2, digit = 3, mix_chars = 4, special_character = 5 };
+	enum en_char_type { smal_letter = 1, capital_letter = 2, digit = 3, mix_chars = 4, special_character = 5};
 
 	//problem 19
 	static void Srand()
@@ -88,7 +88,7 @@ public:
 		A = B;
 		B = Temp;
 	}
-
+	
 	static void swap(double& A, double& B)
 	{
 		double Temp;
@@ -112,7 +112,7 @@ public:
 		A = B;
 		B = Temp;
 	}
-
+	
 	static void swap(string& A, string& B)
 	{
 		string Temp;
@@ -120,7 +120,7 @@ public:
 		A = B;
 		B = Temp;
 	}
-
+	
 	static void swap(clsDate& A, clsDate& B)
 	{
 		clsDate::swap_dates(A, B);
@@ -142,7 +142,7 @@ public:
 			swap(array[random_number(1, array_length) - 1], array[random_number(1, array_length) - 1]);
 		}
 	}
-
+	
 	//problem 23 ***
 	static void fill_array_with_random_numbers(int array[], int array_length, int from, int to)
 	{
@@ -165,7 +165,7 @@ public:
 	}
 
 	//problem 33
-	static void fill_array_with_random_keys(string keys[], short number_of_keys, en_char_type char_type)
+	static void fill_array_with_random_keys(string keys[], short number_of_keys,en_char_type char_type)
 	{
 		for (int i = 0; i < number_of_keys; i++)
 		{

@@ -338,7 +338,7 @@ public:
 	}
 
 	//problem 16 ttt
-	static clsDate add_one_day(clsDate& date)
+	static clsDate add_one_day(clsDate &date)
 	{
 		if (is_last_day_in_month(date))
 		{
@@ -371,13 +371,13 @@ public:
 		time_t t = time(0);
 		tm* now = localtime(&t);
 
-		short year, month, day;
+		short year, month,day;
 
 		year = now->tm_year + 1900;
 		month = now->tm_mon + 1;
 		day = now->tm_mday;
 
-		return clsDate(day, month, year);
+		return clsDate(day,month,year);
 	}
 
 	static int your_age_in_days(clsDate date1)
@@ -424,7 +424,7 @@ public:
 	}
 
 	//problem 20 to 32 ttt
-	static clsDate increase_date_by_x_days(clsDate& date, short number_of_days)
+	static clsDate increase_date_by_x_days(clsDate &date, short number_of_days)
 	{
 		for (short i = 1; i <= number_of_days; i++)
 		{
@@ -438,7 +438,7 @@ public:
 		increase_date_by_x_days(*this, number_of_days);
 	}
 
-	static clsDate increase_date_by_one_week(clsDate& date)
+	static clsDate increase_date_by_one_week(clsDate &date)
 	{
 
 		for (short i = 1; i <= 7; i++)
@@ -453,7 +453,7 @@ public:
 		increase_date_by_one_week(*this);
 	}
 
-	static clsDate increase_date_by_x_weeks(clsDate& date, short number_of_weeks)
+	static clsDate increase_date_by_x_weeks(clsDate &date, short number_of_weeks)
 	{
 		for (short i = 1; i <= number_of_weeks; i++)
 		{
@@ -467,7 +467,7 @@ public:
 		increase_date_by_x_weeks(*this, number_of_weeks);
 	}
 
-	static clsDate increase_date_by_one_month(clsDate& date)
+	static clsDate increase_date_by_one_month(clsDate &date)
 	{
 		if (date._month == 12)
 		{
@@ -491,7 +491,7 @@ public:
 		increase_date_by_one_month(*this);
 	}
 
-	static clsDate increase_date_by_x_months(clsDate& date, short number_of_months)
+	static clsDate increase_date_by_x_months(clsDate &date, short number_of_months)
 	{
 		for (short i = 1; i <= number_of_months; i++)
 		{
@@ -505,7 +505,7 @@ public:
 		increase_date_by_x_months(*this, number_of_months);
 	}
 
-	static clsDate increase_date_by_one_year(clsDate& date)
+	static clsDate increase_date_by_one_year(clsDate &date)
 	{
 		date._year++;
 
@@ -521,7 +521,7 @@ public:
 		increase_date_by_one_year(*this);
 	}
 
-	static clsDate increase_date_by_x_years(clsDate& date, short number_of_years)
+	static clsDate increase_date_by_x_years(clsDate &date, short number_of_years)
 	{
 		date._year += number_of_years;
 
@@ -532,7 +532,7 @@ public:
 		increase_date_by_x_years(*this, number_of_years);
 	}
 
-	static clsDate increase_date_by_one_decade(clsDate& date)
+	static clsDate increase_date_by_one_decade(clsDate &date)
 	{
 		date._year += 10;
 
@@ -543,7 +543,7 @@ public:
 		increase_date_by_one_decade(*this);
 	}
 
-	static clsDate increase_date_by_x_decades(clsDate& date, short number_of_decades)
+	static clsDate increase_date_by_x_decades(clsDate &date, short number_of_decades)
 	{
 		date._year += number_of_decades * 10;
 
@@ -554,7 +554,7 @@ public:
 		increase_date_by_x_decades(*this, number_of_decades);
 	}
 
-	static clsDate increase_date_by_one_century(clsDate& date)
+	static clsDate increase_date_by_one_century(clsDate &date)
 	{
 		date._year += 100;
 
@@ -565,7 +565,7 @@ public:
 		increase_date_by_one_century(*this);
 	}
 
-	static clsDate increase_date_by_one_millennium(clsDate& date)
+	static clsDate increase_date_by_one_millennium(clsDate &date)
 	{
 		date._year += 1000;
 		return date;
@@ -576,7 +576,7 @@ public:
 	}
 
 	//problem 33 to 46 ttt
-	static clsDate decrease_date_by_one_day(clsDate& date)
+	static clsDate decrease_date_by_one_day(clsDate &date)
 	{
 		if (date._day == 1)
 		{
@@ -604,7 +604,7 @@ public:
 		decrease_date_by_one_day(*this);
 	}
 
-	static clsDate decrease_date_by_x_days(clsDate& date, short number_of_days)
+	static clsDate decrease_date_by_x_days(clsDate &date, short number_of_days)
 	{
 		for (short i = 1; i <= number_of_days; i++)
 		{
@@ -618,7 +618,7 @@ public:
 		decrease_date_by_x_days(*this, number_of_days);
 	}
 
-	static clsDate decrease_date_by_one_week(clsDate& date)
+	static clsDate decrease_date_by_one_week(clsDate &date)
 	{
 		date = decrease_date_by_x_days(date, 7);
 
@@ -629,7 +629,7 @@ public:
 		decrease_date_by_one_week(*this);
 	}
 
-	static clsDate decrease_date_by_x_weeks(clsDate& date, short number_of_weeks)
+	static clsDate decrease_date_by_x_weeks(clsDate &date, short number_of_weeks)
 	{
 		for (short i = 1; i <= number_of_weeks; i++)
 		{
@@ -643,7 +643,7 @@ public:
 		decrease_date_by_x_weeks(*this, number_of_weeks);
 	}
 
-	static clsDate decrease_date_by_one_month(clsDate& date)
+	static clsDate decrease_date_by_one_month(clsDate &date)
 	{
 		if (date._month == 1)
 		{
@@ -669,7 +669,7 @@ public:
 		decrease_date_by_one_month(*this);
 	}
 
-	static clsDate decrease_date_by_x_months(clsDate& date, short number_of_months)
+	static clsDate decrease_date_by_x_months(clsDate &date, short number_of_months)
 	{
 		for (short i = 1; i <= number_of_months; i++)
 		{
@@ -683,7 +683,7 @@ public:
 		decrease_date_by_x_months(*this, number_of_months);
 	}
 
-	static clsDate decrease_date_by_one_year(clsDate& date)
+	static clsDate decrease_date_by_one_year(clsDate &date)
 	{
 		date._year--;
 
@@ -699,7 +699,7 @@ public:
 		decrease_date_by_one_year(*this);
 	}
 
-	static clsDate decrease_date_by_x_years(clsDate& date, short number_of_years)
+	static clsDate decrease_date_by_x_years(clsDate &date, short number_of_years)
 	{
 		date._year -= number_of_years;
 
@@ -715,7 +715,7 @@ public:
 		decrease_date_by_x_years(*this, number_of_years);
 	}
 
-	static clsDate decrease_date_by_one_decade(clsDate& date)
+	static clsDate decrease_date_by_one_decade(clsDate &date)
 	{
 		date._year -= 10;
 
@@ -726,7 +726,7 @@ public:
 		decrease_date_by_one_decade(*this);
 	}
 
-	static clsDate decrease_date_by_x_decades_faster(clsDate& date, short number_of_decades)
+	static clsDate decrease_date_by_x_decades_faster(clsDate &date, short number_of_decades)
 	{
 		date._year -= number_of_decades * 10;
 
@@ -737,7 +737,7 @@ public:
 		decrease_date_by_x_decades_faster(*this, number_of_decades);
 	}
 
-	static clsDate decrease_date_by_one_century(clsDate& date)
+	static clsDate decrease_date_by_one_century(clsDate &date)
 	{
 		date._year -= 100;
 
@@ -748,7 +748,7 @@ public:
 		decrease_date_by_one_century(*this);
 	}
 
-	static clsDate decrease_date_by_one_millennium(clsDate& date)
+	static clsDate decrease_date_by_one_millennium(clsDate &date)
 	{
 		date._year -= 1000;
 		return date;
@@ -829,7 +829,7 @@ public:
 	static short calculate_business_day(clsDate date_from, clsDate date_to)
 	{
 		short business_days = 0;
-		while (is_date1_before_date2(date_from, date_to))
+		while (is_date1_before_date2(date_from,date_to))
 		{
 			if (is_business_day(date_from))
 				business_days++;
@@ -847,7 +847,7 @@ public:
 	//problem 54 ttt
 	static short calculate_vacation_days(clsDate date_from, clsDate date_to)
 	{
-		return calculate_business_day(date_from, date_to);
+		return calculate_business_day(date_from,date_to);
 	}
 	short calculate_vacation_days(clsDate date_to)
 	{
@@ -875,7 +875,7 @@ public:
 
 		return date_to;
 	}
-
+	
 
 	//problem 57
 
@@ -976,7 +976,6 @@ public:
 	{
 		return format_date(*this, format);
 	}
-
 
 	static string get_system_date_time_string()
 	{

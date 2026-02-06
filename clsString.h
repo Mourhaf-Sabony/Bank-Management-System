@@ -75,7 +75,7 @@ public:
 	}
 	void upper_first_letter_of_each_word()
 	{
-		_value = upper_first_letter_of_each_word(_value);
+		_value =  upper_first_letter_of_each_word(_value);
 	}
 
 	//problem 25/7 ttt
@@ -95,7 +95,7 @@ public:
 	}
 	void lower_first_letter_of_each_word()
 	{
-		_value = lower_first_letter_of_each_word(_value);
+		_value =  lower_first_letter_of_each_word(_value);
 	}
 
 	//problem 26/7 ttt
@@ -178,7 +178,7 @@ public:
 	}
 
 	//problem 31/7 ttt
-	static short count_specific_letter(string s1, char ch1, bool match_case = true)
+	static short count_specific_letter(string s1, char ch1,bool match_case = true)
 	{
 		short counter = 0;
 		for (short i = 0; i < s1.length(); i++)
@@ -199,7 +199,7 @@ public:
 	}
 	short count_specific_letter(char ch1, bool match_case = true)
 	{
-		return count_specific_letter(_value, ch1, match_case);
+		return count_specific_letter(_value,ch1,match_case);
 	}
 
 	//problem 33/7 ttt
@@ -342,7 +342,7 @@ public:
 	}
 	vector <string> split(string delim)
 	{
-		return split(_value, delim);
+		return split(_value,delim);
 	}
 
 	//problem 38/7 ttt

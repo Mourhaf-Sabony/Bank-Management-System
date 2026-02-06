@@ -43,7 +43,7 @@ private:
         client.set_pin_code(clsInputValidate::read_string());
 
         cout << "\nenter the account balance: ";
-        client.set_account_balance(clsInputValidate::read_float_number());
+        client.set_account_balance(clsInputValidate::read_number<float>());
     }
 
 public:
@@ -95,7 +95,7 @@ public:
             }
 
         }
-
+        
 
     }
 

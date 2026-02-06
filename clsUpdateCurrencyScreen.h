@@ -52,7 +52,7 @@ public:
 			cout << "\n________________________\n";
 
 			cout << "\nEnter New Rate: ";
-			float new_rate = clsInputValidate::read_float_number();
+			float new_rate = clsInputValidate::read_number<float>();
 
 			currency.update_rate(new_rate);
 

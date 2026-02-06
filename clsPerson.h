@@ -21,7 +21,7 @@ public:
 		_phone = phone;
 	}
 
-
+	
 
 	void set_first_name(string first_name)
 	{
@@ -63,6 +63,7 @@ public:
 	{
 		return _phone;
 	}
+
 
 };
 

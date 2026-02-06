@@ -19,7 +19,7 @@ private:
     static short _read_currency_exchange_option()
     {
         cout << setw(37) << left << "" << "Choose what do you want to do? [1 to 5] ";
-        short choice = clsInputValidate::read_short_number_between(1, 5, "Enter number between 1 to 5?");
+        short choice = clsInputValidate::read_number_between<short>(1, 5, "Enter number between 1 to 5?");
         return choice;
     }
 
@@ -50,7 +50,7 @@ private:
         clsCurrencyCalculatorScreen::show_currency_caculator_screen();
     }
 
-
+  
 
     static void _perform_currency_exhange_option(encurrency_exchange_options currency_exchange_option)
     {
@@ -84,8 +84,8 @@ private:
 public:
 
 
-    static void show_currencies_menue()
-    {
+	static void show_currencies_menue()
+	{
         if (!check_access_rights(clsUser::en_permissions::ecurrency_exchange))
         {
             return;//this will exit the function and it will not continue
@@ -105,6 +105,6 @@ public:
 
         _perform_currency_exhange_option((encurrency_exchange_options)_read_currency_exchange_option());
 
-    }
+	}
 };
 

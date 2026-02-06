@@ -23,22 +23,22 @@ class clsMainScreen : protected clsScreen
 private:
 
 
-    enum enmain_menue_options {
-        eshow_client_list = 1, eadd_new_client = 2,
-        edelete_client_info = 3, eupdate_client_info = 4,
-        efind_client = 5, etransactions = 6, emanage_users = 7, elogin_register = 8, ecurrency_exhange = 9, eexit = 10
-    };
+	enum enmain_menue_options {
+		eshow_client_list = 1, eadd_new_client = 2,
+		edelete_client_info = 3, eupdate_client_info = 4,
+		efind_client = 5, etransactions = 6, emanage_users = 7,elogin_register = 8,ecurrency_exhange = 9, eexit = 10 
+	};
 
     static short _read_main_menue_option()
     {
         cout << setw(37) << left << "" << "Choose what do you want to do? [1 to 10] ";
-        short choice = clsInputValidate::read_short_number_between(1, 10, "Enter number between 1 to 10?");
+        short choice = clsInputValidate::read_number_between<short>(1, 10,"Enter number between 1 to 10?");
         return choice;
     }
 
     static void _go_back_to_main_menue()
     {
-        cout << "\n\tPress any key to go back to Main Menue...\n";
+        cout <<  "\n\tPress any key to go back to Main Menue...\n";
 
         system("pause>0");
         show_main_menue();
@@ -153,10 +153,10 @@ private:
 
 public:
 
-    static void show_main_menue()
-    {
-        system("cls");
-        _draw_screen_header("\t\tMain Screen");
+	static void show_main_menue()
+	{
+		system("cls");
+		_draw_screen_header("\t\tMain Screen");
 
         cout << setw(37) << left << "" << "===========================================\n";
         cout << setw(37) << left << "" << "\t\t\tMain Menue\n";
@@ -174,7 +174,7 @@ public:
         cout << setw(37) << left << "" << "===========================================\n";
 
         _perform_main_menue_option((enmain_menue_options)_read_main_menue_option());
-    }
+	}
 
 };
 

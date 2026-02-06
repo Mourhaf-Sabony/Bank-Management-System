@@ -29,24 +29,24 @@ private:
         client.set_pin_code(clsInputValidate::read_string());
 
         cout << "\nenter the account balance: ";
-        client.set_account_balance(clsInputValidate::read_float_number());
+        client.set_account_balance(clsInputValidate::read_number<float>());
     }
 
 
     static void _print_client(clsBankClient client)
-    {
-        cout << "\nClient Card:";
-        cout << "\n___________________";
-        cout << "\nFirstName   : " << client.get_first_name();
-        cout << "\nLastName    : " << client.get_last_name();
-        cout << "\nFull Name   : " << client.get_full_name();
-        cout << "\nEmail       : " << client.get_email();
-        cout << "\nPhone       : " << client.get_phone();
-        cout << "\nAcc. Number : " << client.get_account_number();
-        cout << "\nPassword    : " << client.get_pin_code();
-        cout << "\nBalance     : " << client.get_account_balance();
-        cout << "\n___________________\n";
-    }
+   {
+       cout << "\nClient Card:";
+       cout << "\n___________________";
+       cout << "\nFirstName   : " << client.get_first_name();
+       cout << "\nLastName    : " << client.get_last_name();
+       cout << "\nFull Name   : " << client.get_full_name();
+       cout << "\nEmail       : " << client.get_email();
+       cout << "\nPhone       : " << client.get_phone();
+       cout << "\nAcc. Number : " << client.get_account_number();
+       cout << "\nPassword    : " << client.get_pin_code();
+       cout << "\nBalance     : " << client.get_account_balance();
+       cout << "\n___________________\n";
+   }
 
 
 public:

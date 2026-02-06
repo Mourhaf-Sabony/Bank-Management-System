@@ -17,7 +17,7 @@ private:
 
 	enum enmode { empty_mode = 0, update_mode = 1, add_new_mode = 2 };
 	enmode _mode;
-
+	
 	string _user_name;
 	string _password;
 	int _permissions;
@@ -27,7 +27,7 @@ private:
 	{
 		vector <string> vuser_data = clsString::split(line, "#//#");
 
-		return clsUser(enmode::update_mode, vuser_data[0], vuser_data[1], vuser_data[2], vuser_data[3], vuser_data[4], clsUtil::decryption_text(vuser_data[5]), stoi(vuser_data[6]));
+		return clsUser(enmode::update_mode, vuser_data[0], vuser_data[1], vuser_data[2], vuser_data[3], vuser_data[4], clsUtil::decryption_text(vuser_data[5]) , stoi(vuser_data[6]));
 	}
 
 	static string _convert_user_object_to_line(clsUser user, string seperator = "#//#")
@@ -130,10 +130,10 @@ private:
 	string _prepare_login_record(string seperator = "#//#")
 	{
 		string login_record = "";
-
+		
 		login_record += clsDate::get_system_date_time_string() + seperator;
 		login_record += _user_name + seperator;
-		login_record += clsUtil::encryption_text(_password) + seperator;
+		login_record += clsUtil::encryption_text(_password)+ seperator;
 		login_record += to_string(_permissions);
 
 		return login_record;
@@ -149,7 +149,7 @@ private:
 		vector <string> vlogin_data_line = clsString::split(line, seperator);
 		login_register_record.date_time = vlogin_data_line[0];
 		login_register_record.user_name = vlogin_data_line[1];
-		login_register_record.password = clsUtil::decryption_text(vlogin_data_line[2]);
+		login_register_record.password = clsUtil::decryption_text(vlogin_data_line[2]) ;
 		login_register_record.permissions = stoi(vlogin_data_line[3]);
 
 		return login_register_record;
@@ -172,9 +172,9 @@ public:
 		int permissions;
 	};
 
-
+	
 	//The Constructor
-	clsUser(enmode mode, string first_name, string last_name, string email, string phone, string user_name, string password, int permissions)
+	clsUser(enmode mode, string first_name, string last_name, string email, string phone, string user_name, string password,int permissions)
 		:clsPerson(first_name, last_name, email, phone)
 	{
 		_mode = mode;
@@ -339,7 +339,7 @@ public:
 	{
 		if (this->get_permission() == en_permissions::eall)
 			return true;
-
+		
 		if ((this->get_permission() & permisssion) == permisssion)
 			return true;
 		else
@@ -348,44 +348,44 @@ public:
 
 
 	//login register methods
-	void register_login()
+	 void register_login()
 	{
-		string stline = _prepare_login_record();
+		 string stline = _prepare_login_record();
 
-		fstream myfile;
+		 fstream myfile;
 
-		myfile.open("LoginRegister.txt", ios::out | ios::app);
-		if (myfile.is_open())
-		{
-			myfile << stline << endl;
-			myfile.close();
-		}
+		 myfile.open("LoginRegister.txt", ios::out | ios::app);
+		 if (myfile.is_open())
+		 {
+			 myfile << stline << endl;
+			 myfile.close();
+		 }
 	}
 
-	static vector <stlogin_register_record> get_login_register_list()
-	{
-		vector <stlogin_register_record> vlogin_register_record;
+	 static vector <stlogin_register_record> get_login_register_list()
+	 {
+		 vector <stlogin_register_record> vlogin_register_record;
 
-		fstream myfile;
+		 fstream myfile;
 
-		myfile.open("LoginRegister.txt", ios::in); //read Mode
+		 myfile.open("LoginRegister.txt", ios::in); //read Mode
 
-		if (myfile.is_open())
-		{
-			string line;
-			stlogin_register_record login_record;
-			while (getline(myfile, line))
-			{
-				login_record = _convert_login_register_line_to_record(line);
-				vlogin_register_record.push_back(login_record);
-			}
-			myfile.close();
-		}
+		 if (myfile.is_open())
+		 {
+			 string line;
+			 stlogin_register_record login_record;
+			 while (getline(myfile, line))
+			 {
+				 login_record = _convert_login_register_line_to_record(line);
+				 vlogin_register_record.push_back(login_record);
+			 }
+			 myfile.close();
+		 }
 
-		return vlogin_register_record;
+		 return vlogin_register_record;
 	}
 
 
-
+	 
 };
 

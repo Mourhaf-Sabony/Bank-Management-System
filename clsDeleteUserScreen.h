@@ -5,10 +5,10 @@
 #include "clsInputValidate.h"
 
 using namespace std;
-class clsDeleteUserScreen : protected clsScreen
+class clsDeleteUserScreen: protected clsScreen
 {
 private:
-
+    
 
     static void _print_user(clsUser user)
     {
@@ -28,9 +28,9 @@ private:
 
 public:
 
-    static void show_delete_user_screen()
-    {
-        _draw_screen_header("\t Delete User Screen");
+	static void show_delete_user_screen()
+	{
+		_draw_screen_header("\t Delete User Screen");
 
         string user_name = "";
 
@@ -60,6 +60,6 @@ public:
                 cout << "\nError, User Was not Deleted";
         }
 
-    }
+	}
 };
 

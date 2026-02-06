@@ -56,12 +56,12 @@ public:
         _print_client(destination_client);
 
         cout << "\nEnter Transfer Amount?";
-        double amount = clsInputValidate::read_dbl_number("enter a number?");
+        double amount = clsInputValidate::read_number<double>("enter a number?");
 
         while (amount > source_client.get_account_balance())
         {
             cout << "\nAmount Exceeds the available Balance, Enter another Amount? ";
-            amount = clsInputValidate::read_dbl_number("enter a number?");
+            amount = clsInputValidate::read_number<double>("enter a number?");
         }
 
         char answer = 'n';
@@ -70,18 +70,18 @@ public:
 
         if (toupper(answer) == 'Y')
         {
-            if (source_client.transfer(amount, destination_client, current_user.get_user_name()))
+            if (source_client.transfer(amount, destination_client,current_user.get_user_name()))
             {
                 cout << "\nAmount Withdrew Successfully.\n";
             }
             else
                 cout << "\nTransfer Faild\n";
-
+            
             _print_client(source_client);
             _print_client(destination_client);
         }
         else
-            cout << "\nOPeration was cancelled.\n";
+            cout << "\nOperation was cancelled.\n";
     }
 };
 

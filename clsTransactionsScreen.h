@@ -18,13 +18,13 @@ private:
 
     enum en_transactions_menue_options {
         edeposit = 1, ewithdraw = 2,
-        etotal_balances = 3, etransfer = 4, etransfer_log = 5, emain_menue = 6
+        etotal_balances = 3, etransfer = 4,etransfer_log = 5, emain_menue = 6
     };
 
     static short _read_transactions_menue_option()
     {
         cout << setw(37) << left << "" << "Choose what do you want to do? [1 to 6]? ";
-        short choice = clsInputValidate::read_short_number_between(1, 6, "Enter a Number between 1 to 6? ");
+        short choice = clsInputValidate::read_number_between<short>(1,6,"Enter a Number between 1 to 6? ");
         return choice;
 
     }
@@ -85,7 +85,7 @@ private:
             _show_transfer_screen();
             _go_back_to_transactions_menue();
             break;
-        case clsTransactionsScreen::etransfer_log:
+        case clsTransactionsScreen::etransfer_log :
             system("cls");
             _show_transfer_log_screen();
             _go_back_to_transactions_menue();
@@ -99,14 +99,14 @@ private:
 
 public:
 
-    static void show_transactions_menue()
-    {
+	static void show_transactions_menue()
+	{
         if (!check_access_rights(clsUser::en_permissions::etransactions))
         {
             return;//this will exit the function and it will not continue
         }
         system("cls");
-        _draw_screen_header("\t  Transactions Screen");
+		_draw_screen_header("\t  Transactions Screen");
 
         cout << setw(37) << left << "" << "===========================================\n";
         cout << setw(37) << left << "" << "\t\t  Transactions Menue\n";
@@ -121,6 +121,6 @@ public:
 
 
         _perform_transactions_menue_option((en_transactions_menue_options)_read_transactions_menue_option());
-    }
+	}
 };
 

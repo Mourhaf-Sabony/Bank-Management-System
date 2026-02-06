@@ -12,7 +12,7 @@ class clsBankClient : public clsPerson
 {
 private:
 
-	enum enmode { empty_mode = 0, update_mode = 1, add_new_mode = 2 };
+	enum enmode { empty_mode = 0, update_mode = 1, add_new_mode = 2 }; 
 	enmode _mode;
 
 	string _account_number;
@@ -22,7 +22,7 @@ private:
 
 	static clsBankClient _convert_line_to_client_object(string line)
 	{
-		vector <string> vclient_data = clsString::split(line, "#//#");
+		vector <string> vclient_data = clsString::split(line,"#//#");
 
 		return clsBankClient(enmode::update_mode, vclient_data[0], vclient_data[1], vclient_data[2], vclient_data[3], vclient_data[4], vclient_data[5], stof(vclient_data[6]));
 	}
@@ -36,7 +36,7 @@ private:
 		client_record += client.get_phone() + seperator;
 		client_record += client.get_account_number() + seperator;
 		client_record += client.get_pin_code() + seperator;
-		client_record += to_string(client.get_account_balance());
+		client_record += to_string(client.get_account_balance()) ;
 
 		return client_record;
 
@@ -53,14 +53,14 @@ private:
 		if (myfile.is_open())
 		{
 			string line;
-			while (getline(myfile, line))
+			while (getline(myfile,line))
 			{
 				clsBankClient client = _convert_line_to_client_object(line);
 				vclients.push_back(client);
 			}
 			myfile.close();
 		}
-
+		
 		return vclients;
 	}
 
@@ -86,37 +86,37 @@ private:
 		}
 	}
 
-	void _update()
+	 void _update()
 	{
-		vector <clsBankClient> _vclients = _load_client_data_from_file();
+		 vector <clsBankClient> _vclients = _load_client_data_from_file();
 
-		for (clsBankClient& C : _vclients)
-		{
-			if (C.get_account_number() == get_account_number())
-			{
-				C = *this;
-				break;
-			}
-		}
-		_save_client_data_to_file(_vclients);
+		 for (clsBankClient& C : _vclients)
+		 {
+			 if (C.get_account_number() == get_account_number())
+			 {
+				 C = *this;
+				 break;
+			 }
+		 }
+		 _save_client_data_to_file(_vclients);
 	}
 
-	void _add_new()
-	{
-		_add_data_line_to_file(_convert_client_object_to_line(*this));
-	}
+	 void _add_new()
+	 {
+		 _add_data_line_to_file(_convert_client_object_to_line(*this));
+	 }
 
-	void _add_data_line_to_file(string line)
-	{
-		fstream myfile;
+	 void _add_data_line_to_file(string line)
+	 {
+		 fstream myfile;
 
-		myfile.open("clients.txt", ios::out | ios::app);
-		if (myfile.is_open())
-		{
-			myfile << line << endl;
-			myfile.close();
-		}
-	}
+		 myfile.open("clients.txt", ios::out | ios::app);
+		 if (myfile.is_open())
+		 {
+			 myfile << line << endl;
+			 myfile.close();
+		 }
+	 }
 
 	static clsBankClient _get_empty_client_object()
 	{
@@ -124,7 +124,7 @@ private:
 	}
 
 
-	string _prepare_transfer_log_record(clsBankClient destination_client, double amount, string user_name, string seperator = "#//#")
+	string _prepare_transfer_log_record(clsBankClient destination_client, double amount,string user_name, string seperator = "#//#")
 	{
 		string transfer_log_record = "";
 
@@ -140,7 +140,7 @@ private:
 	}
 
 
-	void _register_transfer_log(clsBankClient destination_client, double amount, string user_name)
+	void _register_transfer_log(clsBankClient destination_client, double amount,string user_name)
 	{
 		string stline = _prepare_transfer_log_record(destination_client, amount, user_name);
 
@@ -240,7 +240,7 @@ public:
 		if (myfile.is_open())
 		{
 			string line;
-			while (getline(myfile, line))
+			while (getline(myfile,line))
 			{
 				clsBankClient client = _convert_line_to_client_object(line);
 				if (client.get_account_number() == account_number)
@@ -255,8 +255,8 @@ public:
 		return _get_empty_client_object();
 
 	}
-
-	static clsBankClient find(string account_number, string pin_code)
+	
+	static clsBankClient find(string account_number,string pin_code)
 	{
 		fstream myfile;
 
@@ -265,7 +265,7 @@ public:
 		if (myfile.is_open())
 		{
 			string line;
-			while (getline(myfile, line))
+			while (getline(myfile,line))
 			{
 				clsBankClient client = _convert_line_to_client_object(line);
 				if (client.get_account_number() == account_number && client.get_pin_code() == pin_code)
@@ -292,7 +292,7 @@ public:
 	{
 		return clsBankClient(enmode::add_new_mode, "", "", "", "", account_number, "", 0.0);
 	}
-
+	
 	bool Delete()
 	{
 		vector <clsBankClient> vclients = _load_client_data_from_file();
@@ -311,7 +311,7 @@ public:
 		return true;
 	}
 
-	enum ensave_result { svfaild_empty_object = 0, svsucceded = 1, svfaild_account_number_exists = 2 };
+	enum ensave_result{svfaild_empty_object = 0,svsucceded = 1,svfaild_account_number_exists = 2};
 
 	ensave_result save()
 	{
@@ -374,7 +374,7 @@ public:
 		}
 	}
 
-	bool transfer(double amount, clsBankClient& destination_client, string user_name)
+	bool transfer(double amount, clsBankClient& destination_client,string user_name)
 	{
 		if (amount > _account_balance)
 		{

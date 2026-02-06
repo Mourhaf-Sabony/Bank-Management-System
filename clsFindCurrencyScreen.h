@@ -8,13 +8,13 @@ class clsFindCurrencyScreen : protected clsScreen
 {
 private:
 
-	enum enfind_currency_option { ecode = 1, ecountry = 2 };
+	enum enfind_currency_option{ecode = 1, ecountry = 2};
 
 
 	static short _read_find_currency_option()
 	{
 		cout << "Find By: [1] Code or [2] Country ?";
-		short choice = clsInputValidate::read_short_number_between(1, 2, "Enter [1] Code or [2] Country ?");
+		short choice = clsInputValidate::read_number_between<short>(1, 2, "Enter [1] Code or [2] Country ?");
 		return choice;
 	}
 
@@ -41,9 +41,9 @@ private:
 		else
 			cout << "\nCurrency Was not Found :-(\n";
 
-
+		
 	}
-
+	
 
 public:
 
@@ -59,7 +59,7 @@ public:
 			string currency_code = clsInputValidate::read_string();
 			clsCurrency currency = clsCurrency::find_by_code(currency_code);
 			_show_result(currency);
-		}
+		} 
 		else if (choice == enfind_currency_option::ecountry)
 		{
 			cout << "\nEnter Country Name: ";
@@ -67,7 +67,7 @@ public:
 			clsCurrency currency = clsCurrency::find_by_country(country);
 			_show_result(currency);
 		}
-
+		
 	}
 };
 

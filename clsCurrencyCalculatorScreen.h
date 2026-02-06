@@ -10,7 +10,7 @@ class clsCurrencyCalculatorScreen : protected clsScreen
 {
 private:
 
-	static void _print_currency(clsCurrency currency, string title = "Currency Card:")
+	static void _print_currency(clsCurrency currency,string title = "Currency Card:")
 	{
 		cout << "\n" << title << "\n";
 		cout << "\n___________________";
@@ -46,7 +46,7 @@ private:
 		{
 			_print_currency(currency_from, "Convert From:");
 
-			cout << fixed << setprecision(2) << "\n" << amount << " " << currency_from.get_currency_code() << " = " << currency_from.convert_to_other_currency(amount, currency_to) << " " << currency_to.get_currency_code();
+			cout << fixed << setprecision(2) << "\n" << amount << " " << currency_from.get_currency_code() << " = " << currency_from.convert_to_other_currency(amount,currency_to) << " " << currency_to.get_currency_code();
 		}
 		else if (currency_from.get_currency_code() == "USD")
 		{
@@ -60,7 +60,7 @@ private:
 
 
 			cout << fixed << setprecision(2) << "\n" << amount << " " << currency_from.get_currency_code() << " = " << currency_from.conver_to_usd(amount) << " USD";
-
+			
 			_print_currency(currency_to, "Convert USD To:");
 
 
@@ -83,14 +83,14 @@ public:
 			clsCurrency currency_to = _get_currency("\nEnter Currency2 code: ");
 
 			cout << "\nEnter Amount to Exchange: ";
-			float amount = clsInputValidate::read_float_number();
+			float amount = clsInputValidate::read_number<float>();
 
 			_print_result_of_calculate(amount, currency_form, currency_to);
 
 			cout << "\n\nDo you want to perform another calculation? y/n?";
 			cin >> answer;
 		}
-
+		
 	}
 
 };

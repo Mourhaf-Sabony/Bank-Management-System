@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class clsAddNewUserScreen : protected clsScreen
+class clsAddNewUserScreen: protected clsScreen
 {
 
 private:
@@ -99,7 +99,7 @@ private:
 		{
 			permissions |= clsUser::emanage_users;
 		}
-
+		
 		cout << "\nLogin Register? y/n? \n";
 		cin >> answer;
 		if (toupper(answer) == 'Y')

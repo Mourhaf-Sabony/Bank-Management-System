@@ -23,19 +23,19 @@ private:
 
 public:
 
-    static void show_client_list()
-    {
+	static void show_client_list()
+	{
 
         if (!check_access_rights(clsUser::en_permissions::eshow_client_list))
         {
             return;//this will exit the function and it will not continue
         }
-        vector <clsBankClient> vclients = clsBankClient::get_client_list();
+		vector <clsBankClient> vclients = clsBankClient::get_client_list();
 
-        string title = "\t  Client List Screen";
-        string subtitle = "\t    (" + to_string(vclients.size()) + ") Client(s).";
+		string title = "\t  Client List Screen";
+		string subtitle = "\t    (" + to_string(vclients.size()) + ") Client(s).";
 
-        _draw_screen_header(title, subtitle);
+		_draw_screen_header(title, subtitle);
 
 
         cout << setw(8) << left << "" << "\n\t_______________________________________________________";
@@ -64,6 +64,6 @@ public:
         cout << setw(8) << left << "" << "\n\t_______________________________________________________";
         cout << "_________________________________________\n" << endl;
 
-    }
+	}
 };
 

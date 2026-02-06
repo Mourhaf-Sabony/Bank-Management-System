@@ -5,7 +5,7 @@
 #include "clsInputValidate.h"
 
 using namespace std;
-class clsUpdateUserScreen : protected clsScreen
+class clsUpdateUserScreen: protected clsScreen
 {
 
 private:
@@ -98,8 +98,8 @@ private:
 		{
 			permissions |= clsUser::emanage_users;
 		}
-
-
+		
+		
 		cout << "\nLogin Register? y/n? \n";
 		cin >> answer;
 		if (toupper(answer) == 'Y')
